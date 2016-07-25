@@ -1,7 +1,6 @@
 package timewheel
 
 import (
-	"fmt"
 	"math/rand"
 	"sync"
 	"time"
@@ -108,7 +107,6 @@ func (w *wheel) addTimer(timeout time.Duration) *Timer {
 		println("exceed maxTimeout set the timeout to MaxTimeout")
 		timeout = w.maxTimeout
 	}
-	fmt.Println(w.index)
 	w.Lock()
 	index := (w.tail + int(timeout/w.interval)) % len(w.buckets)
 	timer := w.buckets[index]
