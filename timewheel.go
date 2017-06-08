@@ -8,7 +8,7 @@ import (
 
 const (
 	DefaultInterval      = time.Second
-	DefaultBucketSize    = 600 // ten min
+	DefaultBucketSize    = 1200 // 20 min
 	DefaultWheelPoolSize = 5
 )
 
@@ -104,7 +104,7 @@ func (w *wheel) addTimer(timeout time.Duration) *Timer {
 		return t
 	}
 	if timeout >= w.maxTimeout {
-		println("exceed maxTimeout set the timeout to MaxTimeout")
+		println("exceed maxTimeout set the timeout to MaxTimeout", timeout, w.maxTimeout)
 		timeout = w.maxTimeout
 	}
 	w.Lock()
