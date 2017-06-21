@@ -103,7 +103,7 @@ func (w *wheel) addTimer(timeout time.Duration) *Timer {
 		close(t.C)
 		return t
 	}
-	if timeout >= w.maxTimeout {
+	if timeout > w.maxTimeout {
 		println("exceed maxTimeout set the timeout to MaxTimeout", timeout, w.maxTimeout)
 		timeout = w.maxTimeout
 	}
